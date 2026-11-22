@@ -44,6 +44,16 @@
   - 验证码刷新后旧验证码未失效（安全问题，严重）
   - token 不带 Bearer 前缀仍能鉴权（安全问题，严重）
   - 前后端密码规则不一致（6-20 位 vs 5-20 位）
+- 缺陷分布图：`screenshots/chart_severity.png`、`screenshots/chart_module.png`
+
+### 6. 完整测试报告
+- 文件：`test-report.md`（在线预览）、`test-report.docx`（Word 版）
+- 六章结构：概述、测试环境、执行情况、缺陷统计与分析、遗留风险、结论与上线建议
+- 结论：有条件通过（核心功能可用，2 个安全类严重缺陷需修复后回归）
+
+### 7. 简历初稿
+- 文件：`resume-draft.md`
+- 按测试实习岗位模板撰写，项目数字与本仓库交付物一致
 
 ## 测试过程要点
 
@@ -59,6 +69,8 @@
 - `api-200.png` — 接口执行 200 OK + 断言全通过
 - `sql-result.png` — SQL 查询结果
 - `crosscheck.png` — 界面新增与数据库交叉验证
+- `chart_severity.png` — 缺陷按严重程度分布图
+- `chart_module.png` — 缺陷按模块分布图
 
 ---
 
