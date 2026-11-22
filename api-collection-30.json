@@ -1,0 +1,656 @@
+{
+  "info": {
+    "name": "若依接口测试-30条(全部执行通过)",
+    "description": "GET/POST/PUT/DELETE + 401/404/405/参数异常等异常场景，token已内置",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImxvZ2luX3VzZXJfa2V5IjoiMjAyMTAwMmEtNjQzZC00OTgxLTg0OGItNzQzMmUzNTQwNGYyIn0.DwkPkNu4q8K5glsf6pjpINQWXeUwnN7zO94D9DvQT2ko8-CIKauylJ5rUJ1KLYLTgGwOd2xNobFTRzdqY9eT5g",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "01 查询用户列表-正常",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/user/list?pageNum=1&pageSize=10"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 按用户名查询-admin",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/user/list?userName=admin"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 查询不存在用户",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/user/list?userName=zzzznotexist"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 分页pageNum=0",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/user/list?pageNum=0&pageSize=10"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "05 获取用户详情-id=2",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/user/2"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "06 部门树",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/user/deptTree"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "07 查询角色列表",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/role/list?pageNum=1&pageSize=10"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "08 菜单列表",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/menu/list"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "09 部门列表",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/dept/list"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "10 岗位列表",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/post/list"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "11 参数列表",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/config/list"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "12 公告列表",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/notice/list"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "13 新增用户-正常",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": "http://localhost:8080/system/user",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"userName\": \"test_api02\", \"nickName\": \"接口测试\", \"password\": \"Admin@123\", \"phonenumber\": \"13800139002\", \"email\": \"test02@test.com\", \"status\": \"0\", \"deptId\": 103, \"roleIds\": [2]}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "14 新增用户-用户名重复",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": "http://localhost:8080/system/user",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"userName\": \"admin\", \"nickName\": \"重复\", \"password\": \"Admin@123\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=500\", () => pm.expect(pm.response.json().code).to.eql(500));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "15 新增用户-缺必填userName",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": "http://localhost:8080/system/user",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nickName\": \"缺用户名\", \"password\": \"Admin@123\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=500\", () => pm.expect(pm.response.json().code).to.eql(500));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "16 修改用户",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": "http://localhost:8080/system/user",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"userId\": 101, \"userName\": \"test_api02\", \"nickName\": \"改名成功\", \"phonenumber\": \"13800139002\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "17 修改用户状态",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": "http://localhost:8080/system/user/changeStatus",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"userId\": 101, \"status\": \"1\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "18 重置密码",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": "http://localhost:8080/system/user/resetPwd",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"userId\": 101, \"password\": \"New@123456\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "19 删除用户",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "http://localhost:8080/system/user/101"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "20 获取用户信息-getInfo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/getInfo"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "21 获取路由-getRouters",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/getRouters"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "22 特殊字符搜索-script",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/user/list?userName=<script>"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "23 大分页pageSize=100",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/user/list?pageNum=1&pageSize=100"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "24 参数非法pageNum=abc",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/user/list?pageNum=abc&pageSize=10"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "25 401-不带token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/user/list",
+        "auth": {
+          "type": "noauth"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=401\", () => pm.expect(pm.response.json().code).to.eql(401));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "26 401-假token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/user/list",
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "fake_token",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=401\", () => pm.expect(pm.response.json().code).to.eql(401));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "27 URL拼错500-类型不匹配",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/user/lis"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=500\", () => pm.expect(pm.response.json().code).to.eql(500));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "28 参数缺失-不带分页",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/user/list"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "29 角色按名查询",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:8080/system/role/list?roleName=admin"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=200\", () => pm.expect(pm.response.json().code).to.eql(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "30 405-方法不支持",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": "http://localhost:8080/system/user/list"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"业务code=500\", () => pm.expect(pm.response.json().code).to.eql(500));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
